@@ -28,3 +28,6 @@ export class WeatherServiceService {
     }
   }
 }
+export interface IWeatherService{
+  getCurrentWeather(city: string, country: string): Observable<ICurrentWeather>
+}
