@@ -12,8 +12,8 @@ export class WeatherServiceService {
 
   getCurrentWeather(city:string, country:string):Observable<ICurrentWeather>{
     return this.httpClient.get<ICurrentWeatherData>(
-      `${environment.baseUrl}api.openweathermap.org/data/2.5/weather?`+
-      `q=${city},${country}&appid=${environment.appId}&units=metric`
+      `http://api.openweathermap.org/data/2.5/weather?`+
+      `q=${city},${country}&appid=c709d8a70a30dbef4ddf9fe8eda0c6fd&units=metric`
     ).pipe(map((data:any)=> this.transformToICurrentWeather(data)))
   }
   
@@ -22,7 +22,7 @@ export class WeatherServiceService {
       city: data.name,
       country: data.sys.country,
       date: new Date(),
-      image: `${environment.baseUrl}openweathermap.org/img/w/${data.weather[0].icon}.png`,
+      image: `http://openweathermap.org/img/w/${data.weather[0].icon}.png`,
       temperature: data.main.temp,
       description: data.weather[0].description,
     }
